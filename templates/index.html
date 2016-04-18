@@ -1,0 +1,65 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <script src="https://www.google.com/jsapi"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="row"><h2>History</h2></div>
+                        <div class="row history_head">
+                            <div class="col-md-2">id</div>
+                            <div class="col-md-3">date</div>
+                            <div class="col-md-3">time</div>
+                            <div class="col-md-4">bias</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Origin Text</h2>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <h2>Result Text</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2" id="history">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <textarea onkeyup="draw_diagram()" id="origin_text"></textarea>
+                            </div>
+                            <div class="col-md-2" id="buttons">
+                                <select id="offset"></select><br>
+                                <button class="btn btn-primary" onclick="encrypt(true)">encrypt</button>
+                                <button class="btn btn-primary" onclick="encrypt(false)">decrypt</button>
+                                <div class="row alert alert-info" id="prediction">Try to decrypt the text</div>
+                            </div>
+                            <div class="col-md-5">
+                                <textarea disabled id="result_text"></textarea>
+                            </div>
+                        </div>
+                        <div class="row" id="diagram">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% csrf_token %}
+</body>
+</html>
